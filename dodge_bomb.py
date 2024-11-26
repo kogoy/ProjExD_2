@@ -41,7 +41,6 @@ def gameover(screen: pg.Surface) -> None:
     text = font.render("Game Over", True, (255, 255, 255))
     text_rect = text.get_rect()
     text_rect.center = 550,325
-
     screen.blit(text, text_rect)
     
     
@@ -84,16 +83,12 @@ def get_kk_img(sum_mv: tuple[int, int]) -> pg.Surface:
              (-5,5):-135,}
 
 
-
     if sum_mv in roto1:
         R_kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 0.9)
     else:
         r_kk_img = pg.transform.flip(pg.image.load("fig/3.png"),True,False)
         R_kk_img = pg.transform.rotozoom(r_kk_img, roto0[sum_mv],0.9)
     return R_kk_img
-
-
-  
 
 
 def main():
@@ -148,7 +143,6 @@ def main():
         pg.display.update()
         tmr += 1
         clock.tick(50)
-
 
 
 
