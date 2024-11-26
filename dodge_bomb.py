@@ -68,6 +68,30 @@ def init_bb_imgs() -> tuple[list[pg.Surface], list[int]]:
         bb_imgs.append(bb_img)
     return bb_imgs, accs
 
+def get_kk_img(sum_mv: tuple[int, int]) -> pg.Surface:
+    roto0 = {(0,-5):90,
+            (5,-5):-135,
+            (5,0):180,
+            (5,5):135,
+            (0,5):90,
+            (-5,5):45,
+            (-5,0):0,
+            (0,0):0,
+            (-5,-5):-45,}
+    roto1 = {(0,0):0,
+             (-5,0):0,
+             (-5,-5):45,
+             (-5,5):-135,}
+
+
+
+    if sum_mv in roto1:
+        R_kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 0.9)
+    else:
+        r_kk_img = pg.transform.flip(pg.image.load("fig/3.png"),True,False)
+        R_kk_img = pg.transform.rotozoom(r_kk_img, roto0[sum_mv],0.9)
+    return R_kk_img
+
 
   
 
